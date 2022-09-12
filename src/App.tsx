@@ -4,8 +4,11 @@ import poweredImage from './assets/powered.png';
 import leftArrowImage from './assets/leftarrow.png';
 import { levels, calculateImc, Level } from './helpers/imc';
 import { GridItem } from './components/GridItem';
+import { useToast } from '@chakra-ui/react'
 
 const App = () => {
+
+	const toast = useToast()
 
 	const [heightField, setHeightField] = useState<number>(0);
 	const [weightField, setWeightField] = useState<number>(0);
@@ -15,7 +18,13 @@ const App = () => {
 		if (heightField && weightField) {
 			setShowItem(calculateImc(heightField, weightField));
 		} else {
-			alert('Digite todos os campos.')
+			toast({
+				title: 'Campos sem Preencher!',
+				description: "Favor preencha todos os campos",
+				status: 'error',
+				duration: 2000,
+				isClosable: true,
+			})
 		}
 	}
 
@@ -66,12 +75,12 @@ const App = () => {
 							))}
 						</div>
 					}
-					{showItem && 
+					{showItem &&
 						<div className={styles.rightBig}>
 							<div className={styles.rightArrow} onClick={handleBackButton}>
-								<img src={leftArrowImage} alt="" width="25"/>
+								<img src={leftArrowImage} alt="" width="25" />
 							</div>
-							<GridItem data={showItem}/>
+							<GridItem data={showItem} />
 						</div>
 					}
 				</div>

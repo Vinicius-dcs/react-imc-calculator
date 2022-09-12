@@ -1,6 +1,6 @@
-# Calculadora de IMC
+# IMC Calculator
 
-Projeto em React + Typescript criando uma calculadora de IMC.
+Project using React and Typescript to create a IMC calculator.
 
 Projeto desenvolvido durante o curso [B7Web](https://b7web.com.br)
 
